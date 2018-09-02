@@ -24,15 +24,6 @@ var settings = {
         xs: {
             width: '560px'
         }
-        /* 
-        We can create any quantity of break points.
- 
-        some_name: {
-            width: 'Npx',
-            fields: 'N(px|%|rem)',
-            offset: 'N(px|%|rem)'
-        }
-        */
     }
 };
  
