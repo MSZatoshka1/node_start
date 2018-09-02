@@ -1,9 +1,13 @@
 {
   "name": "node_start",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "description": "",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,19 @@
   "bugs": {
     "url": "https://github.com/MSZatoshka1/node_start/issues"
   },
-  "homepage": "https://github.com/MSZatoshka1/node_start#readme"
+  "homepage": "https://github.com/MSZatoshka1/node_start#readme",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-plugin-node": "^7.0.1",
+    "less": "^3.8.1",
+    "nodemon": "^1.18.4",
+    "smart-grid": "^2.1.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
+  }
 }
