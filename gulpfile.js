@@ -7,13 +7,13 @@ const nodemon = require('nodemon');
 function less_(){
     return gulp.src('less/man.less')
     .pipe(less())
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('public/css/'));
 }
 function css(){
-    return gulp.src('css/man.css')
+    return gulp.src('public/css/man.css')
     .pipe(gcmq())
     //.pipe(cssmin())
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('public/css/'));
 }
 function watch (){
     nodemon({
