@@ -30,58 +30,33 @@
         padding-right: @fields_sm;
     });
 }
-
-.row-offsets(){
-    margin-left: (@offset_one_side * -1);
-    margin-right: (@offset_one_side * -1);
-}
-
-.col-offsets(@type){
-    @{type}-left: @offset_one_side;
-    @{type}-right: @offset_one_side;
-}
-
 .wrapper(){
     max-width: 1200px;
     margin: 0 auto;
     .wrapper-full();
 }
-
+// ----- ------------------- ------------------------ ------------------- ------------------------ ------------------- -------------------
+.row-offsets(){
+    margin-left: (@offset_one_side * -1);
+    margin-right: (@offset_one_side * -1);
+}
 .row-flex(){
     display: flex;
     flex-wrap: wrap;
     .row-offsets();
 }
-
-.row-float(){
-    .row-offsets();
-    .clearfix();
-}
-
-.row-ib(){
-    .row-offsets();
-}
-
+// ------------------------ ------------------- ------------------------ ------------------- -------------------
 .col(){
-    box-sizing: border-box;
-    word-wrap: break-word;
     .col-offsets(margin);
 }
-
-.col-float(){
-    float: left;
+.col-offsets(@type){
+    @{type}-left: @offset_one_side;
+    @{type}-right: @offset_one_side;
 }
-
-.col-ib(){
-    display: inline-block;
-    vertical-align: top;
-}
-
 .col-padding(){
-    word-wrap: break-word;
     .col-offsets(padding);
 }
-
+// -------------------------------------------------------------- ------------------- ------------------------ ------------------- -------------------
 .size(@n){
     @val: 100% / @columns * @n;
     width: ~"calc(@{val} - @{offset})";
@@ -89,7 +64,7 @@
 
 .size-lg(@n){
     @val: 100% / @columns * @n;
-    .lg(width, ~"calc(@{val} - @{offset_lg})");
+    .lg-block(width, ~"calc(@{val} - @{offset_lg})");
 }
 
 .size-md(@n){
@@ -106,7 +81,7 @@
     @val: 100% / @columns * @n;
     .xs(width, ~"calc(@{val} - @{offset_xs})");
 }
-
+// ---------------------------------------------------------
 .shift(@n){
     @val: 100% / @columns * @n;
     margin-left: ~"calc(@{val} + @{offset_one_side})";
@@ -266,7 +241,7 @@
     @val: 100% / @columns * @n;
     .xs(padding-right, ~"calc(@{val} + @{offset_xs_one_side})");
 }
-
+// ----- ------------------- ------------------------ ------------------- ------------------------ ------------------- -------------------
 .lg(@name, @value){
     @media screen and (max-width: @break_lg){
         @{name}: @value;
@@ -314,45 +289,8 @@
         @content();
     }
 }
-
-.from(@min_width, @content){
-    @media screen and (min-width: @min_width){
-        @content();
-    }
-}
-
-.to(@max_width, @content){
-    @media screen and (max-width: @max_width){
-        @content();
-    }
-}
-
-.from-to(@min_width, @max_width, @content){
-    @media screen and (min-width: @min_width) and (max-width: @max_width){
-        @content();
-    }
-}
-
-.u-row-flex(@offset){
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: (@offset / -2);
-    margin-right: (@offset / -2);
-}
-
-.u-col(@offset){
-    box-sizing: border-box;
-    word-wrap: break-word;
-    margin-left: (@offset / 2);
-    margin-right: (@offset / 2);
-}
-
-.u-size(@n, @columns, @offset){
-    width: ~"calc(100% / @{columns} * @{n} - @{offset})";
-}
-
 .reset(){
-    body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,input,textarea,p,blockquote,th,td{
+    *{
         margin: 0;
         padding: 0;
     }
@@ -360,74 +298,20 @@
         border-collapse: collapse;
         border-spacing: 0;
     }
-    fieldset,img,abbr{
-        border: 0;
-    }
-    address,caption,cite,code,dfn,em,strong,th,var{
-        font-style: normal;
-        font-weight: normal;
-    }
     ul li{
         list-style: none;
-    }
-    caption,th{
-        text-align: left;
-    }
-    h1,h2,h3,h4,h5,h6{
-        font-size: 100%;
-        font-weight: normal;
-    }
-    sup{
-        vertical-align: text-top;
-    }
-    sub{
-        vertical-align: text-bottom;
     }
     input,textarea,select{
         font-family: inherit;
         font-size: inherit;
-        font-weight: inherit;
-    }
-    legend{
-        color: #000;
-    }
-    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main{
-        display: block;
     }
     img{
         max-width: 100%;
         height: auto;
+        border: 0;
+    }
+    a{
+        text-decoration: none;
     }
 }
-
-.debug(@background, @outline){
-    height: 100vh;
-    position: fixed;
-    width: 100%;
-    
-    > div{
-        height: inherit;
-        .wrapper();
-        
-        > div{
-            height: inherit;
-            .row-flex();
-            
-            > div{
-                .col();
-                .size(1);
-                height: inherit;
-                outline: @outline;
-                background: @background;
-            }
-        }
-    }
-}
-
-.clearfix(){
-    &::after{
-        display: block;
-        content: "";
-        clear: both;
-    }
-}
+ 

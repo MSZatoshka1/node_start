@@ -12,13 +12,14 @@ function less_(){
 function css(){
     return gulp.src('public/css/man.css')
     .pipe(gcmq())
-    //.pipe(cssmin())
+    // .pipe(cssmin())
     .pipe(gulp.dest('public/css/'));
 }
 function watch (){
     nodemon({
-        script: 'index.js'
-      , tasks: ['browserify']
+        script: 'index.js',
+        ext: 'js css',
+        tasks: ['browserify']
       })
     gulp.watch('./less/*.less', gulp.series(less_,css));
 }
